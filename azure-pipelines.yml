@@ -31,7 +31,7 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'e4ab839e-a978-4b88-8ea0-004e92b4c56b'
+    azureSubscription: 'Azure for Students'
     appType: 'webApp'
     appName: 'api-mapu-cicd'
     package: '$(Build.ArtifactStagingDirectory)/*.zip'
