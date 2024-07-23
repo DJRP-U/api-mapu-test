@@ -9,7 +9,7 @@ pool:
 steps:
 - task: UseNode@1
   inputs:
-    version: '20.x'
+    version: '18.x'
 - script: npm install
   displayName: 'Instalar dependencias'
 
@@ -28,11 +28,12 @@ steps:
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'drop'
+    
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure for Students(e4ab839e-a978-4b88-8ea0-004e92b4c56b)'
     appType: 'webAppLinux'
-    appName: 'api-mapu-cicd'
+    appName: 'devop-test'
     package: '$(Build.ArtifactStagingDirectory)/*.zip'
     runtimeStack: 'NODE|18-lts'
-    startUpCommand: 'npm start'
+    StartupCommand: 'npm start'
