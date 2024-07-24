@@ -1,10 +1,10 @@
 trigger:
-  branches:
-    include:
-      - main
+  - main
 
 pool:
-  vmImage: "ubuntu-latest"
+  name: Default # O el nombre de tu pool de agentes
+  demands:
+    - agent.name -equals viviagent
 
 steps:
   - task: UseNode@1
@@ -32,7 +32,7 @@ steps:
       rootFolderOrFile: "$(Build.SourcesDirectory)"
       includeRootFolder: false
       archiveType: "zip"
-      archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
       replaceExistingArchive: true
 
   - task: PublishBuildArtifacts@1
