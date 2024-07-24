@@ -20,22 +20,22 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    rootFolderOrFile: "$(Build.SourcesDirectory)"
     includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveType: "zip"
+    archiveFile: "$(Build.ArtifactStagingDirectory)/app.zip"
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
+    pathToPublish: "$(Build.ArtifactStagingDirectory)"
+    artifactName: "drop"
     
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure for Students(e4ab839e-a978-4b88-8ea0-004e92b4c56b)'
     appType: 'webAppLinux'
     appName: 'expounl'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: "$(Build.ArtifactStagingDirectory)/app.zip"
     runtimeStack: 'NODE|18-lts'
     startUpCommand: 'npm start'
