@@ -13,8 +13,8 @@ const validateRequestBody = (validationSchema) => async (req, res, next) => {
     if (error) {
       const errorsMessages = error.details
         ? error.details?.map(
-            (detail) => detail.context?.message || detail.message
-          )
+          (detail) => detail.context?.message || detail.message
+        )
         : [error.message];
 
       const message = `Se han encontrado algunos errores: ${errorsMessages.join(

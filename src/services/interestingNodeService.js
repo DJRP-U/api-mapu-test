@@ -36,17 +36,17 @@ const getInterestingNodes = async (where = {}, skip, limit, search) => {
 const applyRegex = async (where, search) => {
   if (search) {
     // Escapar caracteres especiales para evitar problemas con la búsqueda regex
-    const escapedSearch = search.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&');
+    const escapedSearch = search.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&");
 
     // Crear una expresión regular para buscar el término con ignorar mayúsculas y minúsculas
-    const regex = new RegExp(escapedSearch, 'i');
+    const regex = new RegExp(escapedSearch, "i");
     const matchedDetails = await detailService.getDetailes({ title: { $regex: regex } });
 
     // Obtener los IDs de los detalles encontrados
     const matchedDetailIds = matchedDetails.map(detail => detail._id);
-    where['detail'] = { $in: matchedDetailIds };
+    where["detail"] = { $in: matchedDetailIds };
   }
-}
+};
 
 const getCountInterestingNodes = async (where = {}, search) => {
   where.type = await getInterestingNodeTypeId();

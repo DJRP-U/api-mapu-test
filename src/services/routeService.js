@@ -3,6 +3,7 @@ const accessNodeService = require("./accessNodeService");
 const nodeService = require("./nodeService");
 const Node = require("../models/Node");
 const Adjacency = require("../models/Adjacency");
+const ValidationError = require("../errors/ValidationError");
 
 async function findShortestRoute(type, origin, destination, nomenclature) {
   // Paso 1: Validar que los nodos de origen y destino estén disponibles y existan

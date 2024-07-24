@@ -3,68 +3,68 @@ const ValidationError = require("../errors/ValidationError");
 const { isValidObjectId } = require("mongoose");
 
 const getCategories = async (where = {}, skip, limit) => {
-    const categories = await Category.find(where).skip(skip).limit(limit);
+  const categories = await Category.find(where).skip(skip).limit(limit);
 
-    return categories;
-}
+  return categories;
+};
 
 const getCountCategories = async (where = {}) => {
-    const numberCategories = await Category.count(where);
+  const numberCategories = await Category.count(where);
 
-    return numberCategories;
-}
+  return numberCategories;
+};
 
 const getCategoryById = async (id) => {
-    if(!isValidObjectId(id)){
-        throw new ValidationError("El dato enviado debe ser un ObjectId");
-    }
-    const category = await Category.findById(id);
+  if(!isValidObjectId(id)){
+    throw new ValidationError("El dato enviado debe ser un ObjectId");
+  }
+  const category = await Category.findById(id);
     
-    if(!category){
-        throw new ValidationError("Categoría no encontrada");
-    }
-    return category;
-}
+  if(!category){
+    throw new ValidationError("Categoría no encontrada");
+  }
+  return category;
+};
 
 const createCategory = async (categoryData) => {
-    const category = await Category.create(categoryData);
+  const category = await Category.create(categoryData);
 
-    return category;
-}
+  return category;
+};
 
 const updateCategory = async (id, categoryData) => {
-    if(!isValidObjectId(id)){
-        throw new ValidationError("El dato enviado debe ser un ObjectId");
-    }
+  if(!isValidObjectId(id)){
+    throw new ValidationError("El dato enviado debe ser un ObjectId");
+  }
 
-    const updateCategory = await Category.findByIdAndUpdate(id, categoryData, { new: true});
+  const updateCategory = await Category.findByIdAndUpdate(id, categoryData, { new: true});
 
-    if(!updateCategory){
-        throw new ValidationError("Categoría no encontrada");
-    }    
+  if(!updateCategory){
+    throw new ValidationError("Categoría no encontrada");
+  }    
 
-    return updateCategory;
-}
+  return updateCategory;
+};
 
 const deleteCategoryById = async (id) => {
-    if(!isValidObjectId(id)){
-        throw new ValidationError("El dato enviado debe ser un ObjectId");
-    }
+  if(!isValidObjectId(id)){
+    throw new ValidationError("El dato enviado debe ser un ObjectId");
+  }
 
-    const deleteCategory = await Category.findByIdAndDelete(id);
+  const deleteCategory = await Category.findByIdAndDelete(id);
 
-    if(!deleteCategory){
-        throw new ValidationError("Categoria no encontrada");
-    }
+  if(!deleteCategory){
+    throw new ValidationError("Categoria no encontrada");
+  }
 
-    return deleteCategory;
-}
+  return deleteCategory;
+};
 
 module.exports = {
-    getCategories,
-    getCountCategories,
-    getCategoryById,
-    createCategory,
-    updateCategory,
-    deleteCategoryById,
-}
+  getCategories,
+  getCountCategories,
+  getCategoryById,
+  createCategory,
+  updateCategory,
+  deleteCategoryById,
+};

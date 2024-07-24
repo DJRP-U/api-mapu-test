@@ -116,7 +116,7 @@ async function validateSubNodeExcelFile(file){
       }
 
       if (row.SUBAMBIENTE) {
-          if (typeof row.SUBAMBIENTE !== "number" ||
+        if (typeof row.SUBAMBIENTE !== "number" ||
           row.SUBAMBIENTE < 1
         ) {
           console.log(row.SUBAMBIENTE);

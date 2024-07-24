@@ -13,7 +13,7 @@ const populateDetail = async (event = {}) => {
 
 const createEvent = async (eventData) => {
   const existingEvent = await Event.findOne({ name: eventData.name });
-  if (existingEvent) throw new FieldExistingError(`El evento ya existe`, 400);
+  if (existingEvent) throw new FieldExistingError("El evento ya existe", 400);
   if (eventData.untilDate < eventData.sinceDate)
     throw new ValidationError(
       "La fecha de inicio del evento debe ser antes de la fecha de termino"

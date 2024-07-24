@@ -5,6 +5,7 @@ const blockNodeServices = require("./blockNodeService");
 const { isValidObjectId } = require("mongoose");
 const validateBlocksExcelFile = require("../helpers/validateBlocksFile");
 const { uploadImageToS3 } = require("../helpers/s3Helpers");
+const ValidationError = require("../errors/ValidationError");
 
 const populateNode = async (block) => {
   // const formated = block.toJSON();

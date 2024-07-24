@@ -90,16 +90,16 @@ const createAdjacency = async (originId, destinationId) => {
 const getNodeAdjacencies = async (node, populate = false, where = {}) => {
   const adjacencies = populate
     ? await Adjacency.find({
-        ...where,
-        $or: [{ origin: node }, { destination: node }],
-      })
-        .populate("origin")
-        .populate("destination")
-        .lean()
+      ...where,
+      $or: [{ origin: node }, { destination: node }],
+    })
+      .populate("origin")
+      .populate("destination")
+      .lean()
     : await Adjacency.find({
-        ...where,
-        $or: [{ origin: node }, { destination: node }],
-      }).lean();
+      ...where,
+      $or: [{ origin: node }, { destination: node }],
+    }).lean();
 
   return adjacencies;
 };
@@ -117,9 +117,9 @@ const getAllAdjacencies = async (where = {}, populate = false) => {
 
   const adjacencies = populate
     ? await Adjacency.find(where)
-        .populate("origin")
-        .populate("destination")
-        .lean()
+      .populate("origin")
+      .populate("destination")
+      .lean()
     : await Adjacency.find(where).lean();
 
   return adjacencies;

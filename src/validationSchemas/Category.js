@@ -51,4 +51,4 @@ const updateCategorySchema = Joi.object({
 module.exports = {
   createCategorySchema,
   updateCategorySchema
-}
+};

@@ -96,25 +96,25 @@ const getNodes = async (where = {}, skip, limit, populate = true) => {
   if (skip || limit)
     nodes = populate
       ? await Node.find(where)
-          .skip(skip ?? 0)
-          .limit(limit ?? 10)
-          .populate("type")
-          .populate("campus")
-          .populate("category")
-          .sort({ createdAt: -1 })
+        .skip(skip ?? 0)
+        .limit(limit ?? 10)
+        .populate("type")
+        .populate("campus")
+        .populate("category")
+        .sort({ createdAt: -1 })
       : await Node.find(where)
-          .skip(skip ?? 0)
-          .limit(limit ?? 10)
-          .sort({ createdAt: -1 });
+        .skip(skip ?? 0)
+        .limit(limit ?? 10)
+        .sort({ createdAt: -1 });
   else {
     nodes = populate
       ? await Node.find(where)
-          .populate("type")
-          .populate("campus")
-          .populate("category")
-          // .populate("block")
-          // .populate("detail")
-          .sort({ createdAt: -1 })
+        .populate("type")
+        .populate("campus")
+        .populate("category")
+      // .populate("block")
+      // .populate("detail")
+        .sort({ createdAt: -1 })
       : await Node.find(where).sort({ createdAt: -1 });
   }
 
@@ -146,8 +146,8 @@ const getAllNodesCoordinates = async (
         node.type === ROUTE_NODO_TYPE
           ? `Nodo ruta - ${node.campus?.name || ""}`
           : node?.detail?.title
-          ? `${node?.detail?.title || ""} - ${node.campus?.name || ""}`
-          : "Sin datos";
+            ? `${node?.detail?.title || ""} - ${node.campus?.name || ""}`
+            : "Sin datos";
       node.color = COLORS_DICTIONARY[node.type];
       node.coordinates = [node.latitude, node.longitude];
       node.detail = undefined;
@@ -308,7 +308,7 @@ const timeCoordinates = async (origin, destination, speed) => {
   const minutes = Math.floor(secondsStimate / 60);
   const seconds = Math.round(secondsStimate % 60);
 
-  return (time = { minutes, seconds });
+  return { minutes, seconds };
 };
 
 const getNodeByNomenclature = async (
@@ -345,7 +345,7 @@ const getNodeByNomenclature = async (
     .lean();
 
   if (!node) {
-    throw new NotExist(`No se ha encontrado la información del lugar`);
+    throw new NotExist("No se ha encontrado la información del lugar");
   }
 
   node.floor = floor;

@@ -18,7 +18,7 @@ const mapSubNode = (row) => {
     floor: row.PISO,
     environment: row.AMBIENTE,
     subEnvironment: row.SUBAMBIENTE
-  }
+  };
 
   return result;
 };
