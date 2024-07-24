@@ -5,7 +5,7 @@ const ValidationError = require("../errors/ValidationError");
 const InvalidToken = require("../errors/InvalidToken");
 const User = require("../models/User");
 const Role = require("../models/Role");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const login = async (email, password) => {
   const user = await User.findOne({ email });
