@@ -4,7 +4,9 @@ trigger:
       - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
+  demands:
+  - agent.name -equals viviagent
 
 steps:
 - task: UseNode@1
@@ -33,7 +35,7 @@ steps:
   inputs:
     azureSubscription: 'Azure for Students(e4ab839e-a978-4b88-8ea0-004e92b4c56b)'
     appType: 'webAppLinux'
-    appName: 'devop-test'
-    package: '$(Build.ArtifactStagingDirectory)/*.zip'
+    appName: 'expounl'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     runtimeStack: 'NODE|18-lts'
-    StartupCommand: 'npm start'
+    startUpCommand: 'npm start'
