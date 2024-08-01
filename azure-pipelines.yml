@@ -4,7 +4,7 @@ trigger:
 pool:
   name: Default # O el nombre de tu pool de agentes
   demands:
-    - agent.name -equals viviagent
+    - agent.name -equals agent-laptop-1
 
 steps:
   - task: UseNode@1
