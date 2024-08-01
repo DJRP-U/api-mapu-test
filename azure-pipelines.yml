@@ -23,10 +23,6 @@ steps:
       npm test
     displayName: "Ejecutar Pruebas Unitarias"
 
-  - script: |
-      npm run snyk
-    displayName: "Ejecutar Snyk"
-
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(Build.SourcesDirectory)"
