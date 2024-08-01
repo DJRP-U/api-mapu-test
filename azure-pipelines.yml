@@ -42,9 +42,9 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: "Azure for Students(e4ab839e-a978-4b88-8ea0-004e92b4c56b)"
-      appType: "webAppLinux"
-      appName: "devop-test"
-      package: "$(Build.ArtifactStagingDirectory)/*.zip"
-      runtimeStack: "NODE|18-lts"
-      StartupCommand: "npm start"
+      azureSubscription: 'Azure for Students(b1a9be0c-3adb-4b54-9b44-14b4d64810e1)'
+      appType: 'webAppLinux'
+      appName: 'devop-test'
+      package: '$(Build.ArtifactStagingDirectory)/*.zip'
+      runtimeStack: 'NODE|18-lts'
+      startUpCommand: 'npm start'
